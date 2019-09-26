@@ -13,7 +13,7 @@ module "aws_iam_src_user_group_role" {
   source = "trussworks/iam-cross-acct-src/aws"
   version = "1.0.0"
   group_name = "group-name"
-  destination_accounts = ["account-id"]
+  destination_account_ids = ["account-id"]
   destination_account_role_name = "group-name"
 }
 ```
@@ -23,7 +23,7 @@ module "aws_iam_src_user_group_role" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| destination\_accounts | The account id where the target role the call is assuming resides. | list | n/a | yes |
+| destination\_account\_ids | The account ids where the target role the call is assuming resides. | list | n/a | yes |
 | destination\_group\_role | The name of the role in the account to be assumed. Again, this should correspond to a group. | string | n/a | yes |
 | group\_name | The name for the role. Conceptually, this should correspond to a group. | string | n/a | yes |
 
@@ -31,7 +31,7 @@ module "aws_iam_src_user_group_role" {
 
 | Name | Description |
 |------|-------------|
-| arn | The arn for the created role. |
-| name | The name for the created role. |
+| iam\_role\_arn | The arn for the created role. |
+| iam\_role\_name | The name for the created role. |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

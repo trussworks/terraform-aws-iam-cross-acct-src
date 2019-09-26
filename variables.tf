@@ -3,8 +3,8 @@ variable "group_name" {
   type        = string
 }
 
-variable "destination_accounts" {
-  description = "The account id where the target role the call is assuming resides."
+variable "destination_account_ids" {
+  description = "The account ids where the target role the call is assuming resides."
   type        = list
 }
 
