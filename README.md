@@ -28,5 +28,19 @@ module "example" {
 ```
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|:----:|:-----:|:-----:|
+| destination\_accounts | The account id where the target role the call is assuming resides. | list | n/a | yes |
+| destination\_group\_role | The name of the role in the account to be assumed. Again, this should correspond to a group. | string | n/a | yes |
+| group\_name | The name for the role. Conceptually, this should correspond to a group. | string | n/a | yes |
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| arn | The arn for the created role. |
+| name | The name for the created role. |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
