@@ -2,8 +2,8 @@
 # IAM Role
 #
 resource "aws_iam_role" "group" {
-  name               = var.group_name
-  description        = "Role for user in the ${var.group_name} group to assume."
+  name               = var.iam_role_name
+  description        = "Role for user in the ${var.iam_role_name} group to assume."
   assume_role_policy = data.aws_iam_policy_document.role_assume_role_policy.json
 }
 
@@ -38,9 +38,9 @@ data "aws_iam_policy_document" "group_role_policy_doc" {
 }
 
 resource "aws_iam_policy" "group_role_policy" {
-  name        = "${var.group_name}_role"
+  name        = "${var.iam_role_name}_role"
   path        = "/"
-  description = "Policy for '${var.group_name}' role permissions."
+  description = "Policy for '${var.iam_role_name}' role permissions."
   policy      = data.aws_iam_policy_document.group_role_policy_doc.json
 }
 
