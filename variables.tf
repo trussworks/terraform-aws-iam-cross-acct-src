@@ -12,3 +12,9 @@ variable "destination_group_role" {
   description = "The name of the role in the account to be assumed. Again, this should correspond to a group."
   type        = string
 }
+
+variable "create_role" {
+  description = "Create this IAM role."
+  type        = bool
+  default     = true
+}
