@@ -7,7 +7,7 @@ resource "aws_iam_role" "group" {
   assume_role_policy = data.aws_iam_policy_document.role_assume_role_policy.json
 }
 
-# Configure a generic policy for assuming roles (require MFA)
+# Configure a generic policy for assuming roles (conditional MFA)
 data "aws_caller_identity" "current" {}
 
 data "aws_iam_policy_document" "role_assume_role_policy" {
@@ -22,7 +22,7 @@ data "aws_iam_policy_document" "role_assume_role_policy" {
     condition {
       test     = "Bool"
       variable = "aws:MultiFactorAuthPresent"
-      values   = ["true"]
+      values   = [var.mfa_present]
     }
   }
 }
