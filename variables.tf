@@ -11,4 +11,5 @@ variable "destination_account_ids" {
 variable "destination_group_role" {
   description = "The name of the role in the account to be assumed. Again, this should correspond to a group."
   type        = string
+  default = ""
 }
