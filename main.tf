@@ -33,7 +33,7 @@ data "aws_iam_policy_document" "role_assume_role_policy" {
 data "aws_iam_policy_document" "group_role_policy_doc" {
   statement {
     actions   = ["sts:AssumeRole"]
-      resources = var.destination_account_ids ? "${formatlist(format("arn:aws:iam::%%s:role/%s", var.destination_group_role), var.destination_account_ids)}" : "${formatlist(format("arn:aws:iam::%%s:root", var.destination_group_role))}"
+    resources = var.destination_group_role ? "${formatlist(format("arn:aws:iam::%%s:role/%s", var.destination_group_role), var.destination_account_ids)}" : "${formatlist("arn:aws:iam::%%s:role/root"), var.destination_account_ids)}" 
   }
 }
 
