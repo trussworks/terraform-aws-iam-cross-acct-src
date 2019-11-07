@@ -15,6 +15,6 @@ variable "destination_group_role" {
 
 variable "mfa_present" {
   description = "Should the generic policy include MFA."
-  type = string
-  default = "true"
+  type        = string
+  default     = "true"
 }
