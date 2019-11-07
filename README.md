@@ -54,7 +54,7 @@ resource "aws_iam_role_policy_attachment" "infra_local_policy_attatchment" {
 | destination\_account\_ids | The account ids where the target role the call is assuming resides. | list | n/a | yes |
 | destination\_group\_role | The name of the role in the account to be assumed. Again, this should correspond to a group. | string | n/a | yes |
 | iam\_role\_name | The name for the role. Conceptually, this should correspond to a group. | string | n/a | yes |
-| mfa\_present | Should the generic policy include MFA. | string | `"true"` | no |
+| mfa\_present | Whether the created policy will include MFA. | string | `"true"` | no |
 
 ## Outputs
 
