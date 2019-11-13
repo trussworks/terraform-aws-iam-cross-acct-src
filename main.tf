@@ -13,16 +13,18 @@ data "aws_caller_identity" "current" {}
 data "aws_iam_policy_document" "role_assume_role_policy" {
   statement {
     actions = ["sts:AssumeRole"]
+
     # only allow folks in this account
     principals {
       type        = "AWS"
       identifiers = [data.aws_caller_identity.current.account_id]
     }
-    # only allow folks with MFA
+
+    # Conditionally require MFA (defaults to true)
     condition {
       test     = "Bool"
       variable = "aws:MultiFactorAuthPresent"
-      values   = [var.mfa_present]
+      values   = [tostring(var.require_mfa)]
     }
   }
 }

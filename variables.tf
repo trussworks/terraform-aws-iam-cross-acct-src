@@ -13,8 +13,8 @@ variable "destination_group_role" {
   type        = string
 }
 
-variable "mfa_present" {
+variable "require_mfa" {
   description = "Whether the created policy will include MFA."
-  type        = string
-  default     = "true"
+  type        = bool
+  default     = true
 }
