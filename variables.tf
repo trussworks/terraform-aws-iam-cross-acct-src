@@ -6,6 +6,7 @@ variable "iam_role_name" {
 variable "destination_account_ids" {
   description = "The account ids where the target role the call is assuming resides."
   type        = list
+  default     = []
 }
 
 variable "destination_group_role" {
