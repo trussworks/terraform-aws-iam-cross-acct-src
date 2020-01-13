@@ -6,11 +6,13 @@ variable "iam_role_name" {
 variable "destination_account_ids" {
   description = "The account ids where the target role the call is assuming resides."
   type        = list
+  default     = []
 }
 
 variable "destination_group_role" {
   description = "The name of the role in the account to be assumed. Again, this should correspond to a group."
   type        = string
+  default     = ""
 }
 
 variable "require_mfa" {
