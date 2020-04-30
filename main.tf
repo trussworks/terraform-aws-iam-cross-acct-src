@@ -1,3 +1,5 @@
+data "aws_partition" "current" {}
+
 #
 # IAM Role
 #
@@ -35,7 +37,7 @@ data "aws_iam_policy_document" "role_assume_role_policy" {
 data "aws_iam_policy_document" "group_role_policy_doc" {
   statement {
     actions   = ["sts:AssumeRole"]
-    resources = "${formatlist(format("arn:aws:iam::%%s:role/%s", var.destination_group_role), var.destination_account_ids)}"
+    resources = "${formatlist(format("arn:${data.aws_partition.current.partition}:iam::%%s:role/%s", var.destination_group_role), var.destination_account_ids)}"
   }
 }
 

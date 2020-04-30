@@ -26,6 +26,8 @@ module "aws_iam_src_user_group_role" {
 
 ```hcl
 
+data "aws_partition" "current" {}
+
 module "infra_group_role" {
   source = "trussworks/iam-cross-acct-src/aws"
   version = "1.0.0"
@@ -46,7 +48,7 @@ module "infra_group" {
 # Additional policy for local account management
 resource "aws_iam_role_policy_attachment" "infra_local_policy_attatchment" {
   role = module.infra_group_role.name
-  policy_arn = "arn:aws:iam::aws:policy/PowerUserAccess"
+  policy_arn = "arn:${data.aws_partition.current.partition}:iam::aws:policy/PowerUserAccess"
 }
 
 ```
@@ -54,6 +56,8 @@ resource "aws_iam_role_policy_attachment" "infra_local_policy_attatchment" {
 ## Example usage without cross-account role assumption permission or mfa requirement
 
 ```hcl
+
+data "aws_partition" "current" {}
 
 module "infra_group_role" {
   source = "trussworks/iam-cross-acct-src/aws"
@@ -74,19 +78,29 @@ module "infra_group" {
 # Additional policy for local account management
 resource "aws_iam_role_policy_attachment" "infra_local_policy_attatchment" {
   role = module.infra_group_role.name
-  policy_arn = "arn:aws:iam::aws:policy/PowerUserAccess"
+  policy_arn = "arn:${data.aws_partition.current.partition}:iam::aws:policy/PowerUserAccess"
 }
 ```
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Requirements
+
+No requirements.
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| aws | n/a |
+
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|:----:|:-----:|:-----:|
-| destination\_account\_ids | The account ids where the target role the call is assuming resides. | list | `[]` | no |
-| destination\_group\_role | The name of the role in the account to be assumed. Again, this should correspond to a group. | string | `""` | no |
-| iam\_role\_name | The name for the role. Conceptually, this should correspond to a group. | string | n/a | yes |
-| require\_mfa | Whether the created policy will include MFA. | bool | `"true"` | no |
+|------|-------------|------|---------|:--------:|
+| destination\_account\_ids | The account ids where the target role the call is assuming resides. | `list` | `[]` | no |
+| destination\_group\_role | The name of the role in the account to be assumed. Again, this should correspond to a group. | `string` | `""` | no |
+| iam\_role\_name | The name for the role. Conceptually, this should correspond to a group. | `string` | n/a | yes |
+| require\_mfa | Whether the created policy will include MFA. | `bool` | `true` | no |
 
 ## Outputs
 
