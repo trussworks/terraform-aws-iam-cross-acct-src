@@ -1,7 +1,8 @@
 ---
 
-**This repo is no longer maintained as it is no longer best practice.
-See the [End of Life notice](EOL.md#end-of-life-notice) for more details.**
+# End of Life notice
+
+**This module is no longer in active development because we have switched from role-chaining to direct role assumption. See the [`terraform-layout-example`](https://github.com/trussworks/terraform-layout-example) for our implementation.**
 
 ---
 
