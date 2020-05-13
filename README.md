@@ -1,3 +1,12 @@
+---
+
+# End of Life notice
+
+**This module is no longer in active development because we have switched from role-chaining to direct role assumption. See the [`terraform-layout-example`](https://github.com/trussworks/terraform-layout-example) for our implementation.**
+
+---
+
+
 This module creates an IAM role based on the `iam_role_name` variable. This should correspond 1:1 with an IAM group though you will need to associate the role with the group outside of this module.
 
 _Optional_: If you specify `destination_account_ids` and `destination_group_role`, the module will create an IAM policy granting the IAM role permission to assume `destination_group_role` in the `destination_account_ids`. If `destination_account_ids` and `destination_group_role` are not provided, this module will create an IAM role, but will not attach an IAM policy to it.
