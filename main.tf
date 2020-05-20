@@ -7,6 +7,7 @@ resource "aws_iam_role" "group" {
   name               = var.iam_role_name
   description        = "Role for user in the ${var.iam_role_name} group to assume."
   assume_role_policy = data.aws_iam_policy_document.role_assume_role_policy.json
+  max_session_duration = var.role_assumption_max_duration
 }
 
 # Configure a generic policy for assuming roles (conditional MFA)
