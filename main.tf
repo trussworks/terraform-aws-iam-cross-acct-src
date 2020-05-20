@@ -24,7 +24,7 @@ data "aws_iam_policy_document" "role_assume_role_policy" {
 
     # Conditionally require MFA (defaults to true)
     condition {
-      test     = "Bool"
+      test     = var.mfa_condition
       variable = "aws:MultiFactorAuthPresent"
       values   = [tostring(var.require_mfa)]
     }

@@ -20,3 +20,9 @@ variable "require_mfa" {
   type        = bool
   default     = true
 }
+
+variable "mfa_condition" {
+  description = "MFA condition method. Use either Bool or BoolIfExists"
+  type        = string
+  default     = "Bool"
+}
