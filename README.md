@@ -1,11 +1,8 @@
----
-
 # End of Life notice
 
 **This module is no longer in active development because we have switched from role-chaining to direct role assumption. See the [`terraform-layout-example`](https://github.com/trussworks/terraform-layout-example) for our implementation.**
 
 ---
-
 
 This module creates an IAM role based on the `iam_role_name` variable. This should correspond 1:1 with an IAM group though you will need to associate the role with the group outside of this module.
 
